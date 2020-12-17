@@ -69,6 +69,7 @@ const button = document.body.addEventListener("click", function (e) {
         clearInterval(lance_timer)
         resetLeTemp()
         bolStart = true
+        tour=0
     }
 })
 let bearkPrincipal = true;
@@ -97,8 +98,8 @@ function timer() {
         if (min == 25) {
             bearkPrincipal = false
             resetLeTemp()
-            console.log("go");
-            tour++
+            tour += 1
+            console.log('tour:', tour)
             tourAffiche.innerHTML = tour
             bolShortBreak = true
             timerDeux.innerHTML = afficheTemp(min2) + ":" + afficheTemp(sec2)
@@ -152,7 +153,6 @@ function afficheTemp(ValeurTime) {
 }
 
 function resetLeTemp() { //temps Principale
-    tour = 0
     sec = 0
     min = 0
     petitSec = 60
@@ -161,7 +161,6 @@ function resetLeTemp() { //temps Principale
     min2 = 4
     sec3 = 60
     min3 = 14
-
     timerPrincipale.innerHTML = afficheTemp(min) + ":00" 
     petitTimerPrincipale.innerHTML = afficheTemp(petitMin+1) + ":00"
     timerDeux.innerHTML = afficheTemp(min2+1) + ":00"
