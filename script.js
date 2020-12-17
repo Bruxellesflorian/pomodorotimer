@@ -102,6 +102,7 @@ function timer() {
             tourAffiche.innerHTML = tour
             bolShortBreak = true
             timerDeux.innerHTML = afficheTemp(min2) + ":" + afficheTemp(sec2)
+            petitTimerPrincipale.innerHTML = afficheTemp(petitMin+1) + ":00"
         }
         if (bolShortBreak === true) {
             if(min2 == 0){
@@ -161,7 +162,8 @@ function resetLeTemp() { //temps Principale
     sec3 = 60
     min3 = 14
 
-    timerPrincipale.innerHTML = afficheTemp(min+1) + ":00" 
+    timerPrincipale.innerHTML = afficheTemp(min) + ":00" 
+    petitTimerPrincipale.innerHTML = afficheTemp(petitMin+1) + ":00"
     timerDeux.innerHTML = afficheTemp(min2+1) + ":00"
     timerDeFin.innerHTML = afficheTemp(min3+1) + ":00" 
 }
