@@ -181,7 +181,7 @@ function timer() {
             }
         }
 
-    }, 0, 1);
+    }, 1000);
 }
 
 function afficheTemp(ValeurTime) {
