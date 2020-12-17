@@ -1,0 +1,106 @@
+
+ html{
+     font-family: 'Courier New', Courier, monospace;
+ }
+
+  .rond{
+    width: 100%;
+    /* height: 400px; */
+    background-color: rgb(56, 63, 63);
+    border-top-left-radius: 15%;
+    border-top-right-radius: 15%;
+    border-bottom-left-radius: 10%;
+    border-bottom-right-radius: 10%;
+    border: inset grey 8px;
+}
+.marginAuto{
+    margin: 0 auto;
+}
+.flexColumns{
+    width: 270px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    
+    /* width: fit-content; */
+}
+.boite{
+    margin: 10px;
+    padding: 28px;
+    color: white;
+    background-color: rgb(75, 72, 72);
+}
+.borderTOP{
+    border-top-left-radius: 20%;
+    border-top-right-radius: 20%;
+}
+.borderBOT{
+    border-bottom-left-radius: 10%;
+    border-bottom-right-radius: 10%;
+}
+.vitreblanche{
+    background: rgb(131, 105, 105);
+    padding: 5px;
+    border: inset grey;
+    text-align: center;
+    font-size: 18px;
+}
+.break{
+    font-size: 12px;
+    color: rgb(83, 49, 49);
+    font-weight: bolder;
+}
+.vitreTour{
+    background: rgb(131, 105, 105);
+    padding: 5px;
+    border: inset grey;
+    text-align: center;
+    font-size: 18px;
+    width: 25%;
+    padding-right: 20px;
+}
+.flex{
+    display: flex;
+}
+.textWhite{
+    color: white;
+    margin-left: 5px;
+}
+button{
+    background-color: rgb(83, 49, 49);
+    padding: 5px;
+    color:white; 
+}
+.textAlign{
+    text-align: end;
+    margin-top: 40px;
+    margin-left: 7px;
+    margin-bottom: -20px;
+}
+.marginMinus{
+    margin-top: -20px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+.textAlignCENTER{
+    display: flex;
+    justify-content: center;
+}
+#timerPrincipale{
+    margin-left: 40px;
+}
+.fa-hourglass-half{
+    color: rgb(187, 99, 99);
+    font-size: x-large;
+}
+.end{
+    text-align: end;
+}
+.ABSOLUTE{
+    position: absolute;
+    width: fit-content;
+    background-color: rgb(82, 90, 126);
+}
+
+
+
