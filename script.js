@@ -50,9 +50,7 @@ function test() { //temps Principale
     min2 = (document.querySelector(".a3").value)
     sec3 = 60
     min3 = (document.querySelector(".a4").value)
-
     tourChoix = document.querySelector(".a1").value
-
     timerPrincipale.innerHTML = afficheTemp(min) + ":00"
     petitTimerPrincipale.innerHTML = afficheTemp(petitMin + 1) + ":00"
     timerDeux.innerHTML = afficheTemp(document.querySelector(".a3").value) + ":00"
@@ -64,8 +62,9 @@ let petitSec = 60
 let petitMin = (document.querySelector(".a2").value) - 1
 
 //______________
-let tour = 0
+let tour = 0;
 const tourAffiche = document.querySelector("#tour")
+
 //______________
 //temps deux
 const timerDeux = document.querySelector("#timerDeux")
@@ -181,7 +180,7 @@ function timer() {
             }
         }
 
-    }, 1000);
+    }, 1);
 }
 
 function afficheTemp(ValeurTime) {
