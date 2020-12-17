@@ -2,7 +2,7 @@
  html{
      font-family: 'Courier New', Courier, monospace;
  }
-
+ 
   .rond{
     width: 100%;
     /* height: 400px; */
@@ -100,7 +100,14 @@ button{
     position: absolute;
     width: fit-content;
     background-color: rgb(82, 90, 126);
-}
 
+}
+div{
+    height: fit-content;
+    transition-duration: 1s;
+}
+img{
+    width: 30px;
+}
 
 

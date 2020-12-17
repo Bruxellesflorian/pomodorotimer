@@ -1,35 +1,68 @@
 const body = document.body
-// const fentreOption = document.querySelector(".ABSOLUTE")
-// const listChoix = [{titre:"Nombre de tour ",class:"a1"},{titre:"Timer ",class:"a2"},{titre:"short-break ",class:"a3"},{titre:"long-break ",class:"a4"},
-// ]
-// const tableO = document.createElement("table")
-// fentreOption.appendChild(tableO)
-// for (let elem of listChoix){
-//     const tr = document.createElement("tr")
-//     tr.innerHTML = elem.titre
-//     fentreOption.appendChild(tr)
+const sablier = document.querySelector("#sablier")
+const fentreOption = document.querySelector(".ABSOLUTE")
+const listChoix = [{
+    titre: "Round ",
+    class: "a1"
+}, {
+    titre: "Timer ",
+    class: "a2"
+}, {
+    titre: "Short-break ",
+    class: "a3"
+}, {
+    titre: "Long-break ",
+    class: "a4"
+}, ]
+const tableO = document.createElement("table")
+fentreOption.appendChild(tableO)
 
-//     const td = document.createElement("td")
-//     tr.appendChild(td)
-//     const select = document.createElement("select")
-//     select.classList.add(elem.class)
-//     td.appendChild(select)
-//     for(let i = 1; i<30;i++){
-//         const opt = document.createElement("option")
-//         opt.innerHTML = i
-//         select.appendChild(opt)
-//     }
+for (let elem of listChoix) {
+    const tr = document.createElement("tr")
+    tr.innerHTML = elem.titre
+    fentreOption.appendChild(tr)
+    const td = document.createElement("td")
+    tr.appendChild(td)
+    const select = document.createElement("select")
+    select.classList.add(elem.class)
+    td.appendChild(select)
+    for (let i = 1; i < 30; i++) {
+        const opt = document.createElement("option")
+        opt.innerHTML = i
+        select.appendChild(opt)
+    }
 
-// }
+}
+const closed = document.createElement("button")
+fentreOption.appendChild(closed)
+closed.innerHTML = "Valid"
 //______________
 //temps Principale
 const timerPrincipale = document.querySelector("#timerPrincipale")
 const petitTimerPrincipale = document.querySelector("#petitTimerPrincipale")
 
+function test() { //temps Principale
+    sec = 0
+    min = 0
+    petitSec = 60
+    petitMin = (document.querySelector(".a2").value) - 1
+    sec2 = 60
+    min2 = (document.querySelector(".a3").value)
+    sec3 = 60
+    min3 = (document.querySelector(".a4").value)
+
+    tourChoix = document.querySelector(".a1").value
+
+    timerPrincipale.innerHTML = afficheTemp(min) + ":00"
+    petitTimerPrincipale.innerHTML = afficheTemp(petitMin + 1) + ":00"
+    timerDeux.innerHTML = afficheTemp(document.querySelector(".a3").value) + ":00"
+    timerDeFin.innerHTML = afficheTemp(document.querySelector(".a4").value) + ":00"
+}
 let sec = 0
 let min = 0
 let petitSec = 60
-let petitMin = 24
+let petitMin = (document.querySelector(".a2").value) - 1
+
 //______________
 let tour = 0
 const tourAffiche = document.querySelector("#tour")
@@ -37,12 +70,12 @@ const tourAffiche = document.querySelector("#tour")
 //temps deux
 const timerDeux = document.querySelector("#timerDeux")
 let sec2 = 60
-let min2 = 4
+let min2 = (document.querySelector(".a3").value)
 //______________
 //temps trois
 const timerDeFin = document.querySelector("#fin")
 let sec3 = 60
-let min3 = 14
+let min3 = (document.querySelector(".a4").value)
 
 let lance_timer;
 
@@ -66,82 +99,89 @@ const button = document.body.addEventListener("click", function (e) {
     }
     if (e.target == reset_button) {
         console.log("reset");
-        clearInterval(lance_timer)
-        resetLeTemp()
-        bolStart = true
-        tour=0
+        // clearInterval(lance_timer)
+        // resetLeTemp()
+        // bolStart = true
+        // tour=0
+        window.location = ""
+    }
+    if (e.target == closed) {
+        fentreOption.style.display = "none"
+    }
+    if(e.target == sablier){
+        fentreOption.style.display = "block"
     }
 })
 let bearkPrincipal = true;
 let bolShortBreak = false;
 
 function timer() {
+    test()
     lance_timer = setInterval(() => {
-        
-        if(tour < 4){
-        if (bearkPrincipal === true) { 
-            sec++
-            petitSec--
-            if (sec == 60) {
-                sec = 0
-                petitSec = 60
-                min++
-                petitMin--
-                if (min >= 60) {
-                    min = 0
-                    petitMin = 0
-                }
-            }
-            petitTimerPrincipale.innerHTML = afficheTemp(petitMin) + ":" + afficheTemp(petitSec)
-            timerPrincipale.innerHTML = afficheTemp(min) + ":" + afficheTemp(sec)
-        }
-        if (min == 25) {
-            bearkPrincipal = false
-            resetLeTemp()
-            tour += 1
-            console.log('tour:', tour)
-            tourAffiche.innerHTML = tour
-            bolShortBreak = true
-            timerDeux.innerHTML = afficheTemp(min2) + ":" + afficheTemp(sec2)
-            petitTimerPrincipale.innerHTML = afficheTemp(petitMin+1) + ":00"
-        }
-        if (bolShortBreak === true) {
-            if(min2 == 0){
-                bearkPrincipal=true
-                bolShortBreak= false
-                sec2 = 60
-                min2 = 4
-            }
-            sec2--
-            if(sec2 == 0){
-                sec2 = 60
-                min2--
-            }
-            timerDeux.innerHTML = afficheTemp(min2) + ":" + afficheTemp(sec2)
-        }
-        if(bolShortBreak === false){
-            timerDeux.innerHTML = afficheTemp(min2+1) + ":" + "00"
-        }
-    }
 
-    if(tour == 4){
-        timerDeux.innerHTML = afficheTemp(min2+1) + ":" + "00"
-        if(min3 == 0){
-            clearInterval(lance_timer)
-            timerDeFin.innerHTML = "time's up"
-            tour++
-        }
-        else{
-            sec3--
-            if(sec3 == 0){
-                sec3 = 60
-                min3--
+        if (tour < tourChoix) {
+            if (bearkPrincipal === true) {
+                sec++
+                petitSec--
+                if (sec == 60) {
+                    sec = 0
+                    petitSec = 60
+                    min++
+                    petitMin--
+                    if (min >= 60) {
+                        min = 0
+                        petitMin = 0
+                    }
+                }
+                petitTimerPrincipale.innerHTML = afficheTemp(petitMin) + ":" + afficheTemp(petitSec)
+                timerPrincipale.innerHTML = afficheTemp(min) + ":" + afficheTemp(sec)
             }
-            timerDeFin.innerHTML = afficheTemp(min3) + ":" + afficheTemp(sec3)
+            if (min == document.querySelector(".a2").value) {
+                bearkPrincipal = false
+                tour++
+                console.log('tour:', tour)
+                tourAffiche.innerHTML = tour
+                bolShortBreak = true
+                timerDeux.innerHTML = afficheTemp(min2) + ":" + afficheTemp(sec2)
+                petitTimerPrincipale.innerHTML = afficheTemp(petitMin) + ":00"
+                test()
+            }
+            if (bolShortBreak === true) {
+                if (min2 == 0) {
+                    bearkPrincipal = true
+                    bolShortBreak = false
+                    sec2 = 60
+                    min2 = document.querySelector(".a3").value
+                }
+                sec2--
+                if (sec2 == 0) {
+                    sec2 = 60
+                    min2--
+                }
+                timerDeux.innerHTML = afficheTemp(min2) + ":" + afficheTemp(sec2)
+            }
+            if (bolShortBreak === false) {
+                timerDeux.innerHTML = afficheTemp(min2) + ":" + "00"
+            }
         }
-    }
-    
-    }, 0,1);
+
+        if (tour == tourChoix) {
+            timerDeux.innerHTML = afficheTemp(min2) + ":" + "00"
+            if (min3 == 0) {
+                clearInterval(lance_timer)
+                timerDeFin.innerHTML = "time's up"
+                tour++
+            } else {
+                sec3--
+                if (sec3 == 0) {
+                    sec3 = 60
+                    min3--
+                }
+                timerDeFin.innerHTML = afficheTemp(min3) + ":" + afficheTemp(sec3)
+            }
+        }
+
+    }, 0, 1);
 }
 
 function afficheTemp(ValeurTime) {
@@ -152,20 +192,21 @@ function afficheTemp(ValeurTime) {
     }
 }
 
-function resetLeTemp() { //temps Principale
-    sec = 0
-    min = 0
-    petitSec = 60
-    petitMin = 24
-    sec2 = 60
-    min2 = 4
-    sec3 = 60
-    min3 = 14
-    timerPrincipale.innerHTML = afficheTemp(min) + ":00" 
-    petitTimerPrincipale.innerHTML = afficheTemp(petitMin+1) + ":00"
-    timerDeux.innerHTML = afficheTemp(min2+1) + ":00"
-    timerDeFin.innerHTML = afficheTemp(min3+1) + ":00" 
-}
+// function resetLeTemp() { //temps Principale
+//     sec = 0
+//     min = 0
+//     petitSec = 60
+//     petitMin = document.querySelector(".a2").value
+//     sec2 = 60
+//     min2 = 4
+//     sec3 = 60
+//     min3 = 14
+//     timerPrincipale.innerHTML = afficheTemp(min) + ":00" 
+//     petitTimerPrincipale.innerHTML = petitMin + ":00"
+//     timerDeux.innerHTML = afficheTemp(min2+1) + ":00"
+//     timerDeFin.innerHTML = afficheTemp(min3+1) + ":00" 
+// }
+
 
 function deroulementPlus(Sec, Min) {
     if (Sec == 60) {
@@ -173,15 +214,6 @@ function deroulementPlus(Sec, Min) {
         Min++
         if (Min >= 60) {
             Min = 0
-        }
-    }
-}
-function deroulementMoin(SecM, MinP) {
-    if (SecM == 0) {
-        SecM = 60
-        MinP--
-        if (MinP == 0) {
-            MinP = 60
         }
     }
 }
